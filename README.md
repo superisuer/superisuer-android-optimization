@@ -1,6 +1,4 @@
 # SAO (Superisuer Android Optimization)
-> [!IMPORTANT]
-> The project has been put on hold for a while. Now you can try the closed beta test and leave feedback on the optimization.
 
 Optimise your smartphone in a second with this utility. You need root permission to use it. This app is completely free. It is suitable for Android devices. It optimises the system with tweaks like turning off Google tracking, turning off error checking, real-time logs and various other tweaks.
 > [!CAUTION]
