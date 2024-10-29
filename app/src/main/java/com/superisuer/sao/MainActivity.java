@@ -1,12 +1,15 @@
 package com.superisuer.sao;
 
 import android.animation.*;
+import android.animation.ObjectAnimator;
 import android.app.*;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.*;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.*;
 import android.graphics.*;
@@ -23,6 +26,11 @@ import android.view.*;
 import android.view.View;
 import android.view.View.*;
 import android.view.animation.*;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.webkit.*;
 import android.widget.*;
 import android.widget.LinearLayout;
@@ -30,10 +38,14 @@ import android.widget.TextView;
 import java.io.*;
 import java.text.*;
 import java.util.*;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.regex.*;
 import org.json.*;
 
 public class MainActivity extends Activity {
+	
+	private Timer _timer = new Timer();
 	
 	private LinearLayout linear1;
 	private LinearLayout linear2;
@@ -55,6 +67,9 @@ public class MainActivity extends Activity {
 	private TextView textview9;
 	
 	private Intent i = new Intent();
+	private AlertDialog.Builder d;
+	private TimerTask t;
+	private ObjectAnimator ob = new ObjectAnimator();
 	
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
@@ -83,6 +98,7 @@ public class MainActivity extends Activity {
 		textview7 = findViewById(R.id.textview7);
 		textview8 = findViewById(R.id.textview8);
 		textview9 = findViewById(R.id.textview9);
+		d = new AlertDialog.Builder(this);
 		
 		textview2.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -103,70 +119,29 @@ public class MainActivity extends Activity {
 		linear8.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View _view) {
-				try {
-					Runtime.getRuntime().exec("su");
-				} catch (Exception s) {
-					finishAffinity();
-				}
-				try { 
-					Runtime.getRuntime().exec("setprop ro.HOME_APP_ADJ 1");
-					Runtime.getRuntime().exec("setprop ro.media.enc.jpeg.quality 100");
-					Runtime.getRuntime().exec("setprop ro.camcorder.videoModes true");
-					Runtime.getRuntime().exec("setprop media.stagefright.enable-player true");
-					Runtime.getRuntime().exec("setprop media.stagefright.enable-meta true");
-					Runtime.getRuntime().exec("setprop media.stagefright.enable-scan true");
-					Runtime.getRuntime().exec("setprop media.stagefright.enable-http true");
-					Runtime.getRuntime().exec("setprop media.stagefright.enable-rtsp true");
-					Runtime.getRuntime().exec("setprop media.stagefright.enable-record false");
-					Runtime.getRuntime().exec("setprop profiler.force_disable_err_rpt 1");
-					Runtime.getRuntime().exec("setprop profiler.force_disable_ulog 1");
-					Runtime.getRuntime().exec("setprop net.tcp.buffersize.default 4096,87380,256960, 4096, 16384,256960");
-					Runtime.getRuntime().exec("setprop net.tcp.buffersize.wifi 4096,87380,256960,409 6,163 84,256960");
-					Runtime.getRuntime().exec("setprop net.tcp.buffersize.umts 4096,8 7380,256960,4096,163 84,256960");
-					Runtime.getRuntime().exec("setprop net.tcp.buffersize.gprs 4096,8 7380,256960,4096,163 84,256960");
-					Runtime.getRuntime().exec("setprop net.tcp.buffersize.edge 4096,8 7380,256960,4096,163 84,256960");
-					Runtime.getRuntime().exec("setprop ro.ril.hep 0");
-					Runtime.getRuntime().exec("setprop ro.ril.hsxpa 2");
-					Runtime.getRuntime().exec("setprop ro.ril.enable.dtm 1");
-					Runtime.getRuntime().exec("setprop ro.ril.hsdpa.category 8");
-					Runtime.getRuntime().exec("setprop ro.ril.enable.a53 1");
-					Runtime.getRuntime().exec("setprop ro.ril.enable.3g.prefix 1");
-					Runtime.getRuntime().exec("setprop ro.ril.htcmaskw1.bitmask 4294967295");
-					Runtime.getRuntime().exec("setprop ro.ril.htcmaskw1 14449");
-					Runtime.getRuntime().exec("setprop ro.ril.hsupa.category 6");
-					Runtime.getRuntime().exec("setprop ro.telephony.call_ring.delay 0");
-					Runtime.getRuntime().exec("setprop ring.delay 0");
-					Runtime.getRuntime().exec("setprop persist.telephony.support.ipv6 1");
-					Runtime.getRuntime().exec("setprop persist.telephony.support.ipv4 1");
-					Runtime.getRuntime().exec("setprop ro.lge.proximity.delay 25");
-					Runtime.getRuntime().exec("setprop mot.proximity.delay 25");
-					Runtime.getRuntime().exec("setprop windowsmgr.max_events_per_sec 150");
-					Runtime.getRuntime().exec("setprop ro.min_pointer_dur 8 ro.max.fling_velocity 12000");
-					Runtime.getRuntime().exec("setprop ro.min.fling_velocity 8000");
-					Runtime.getRuntime().exec("setprop persist.cust.tel.eons 1");
-					Runtime.getRuntime().exec("setprop ro.ril.enable.amr.wideband 1");
-					Runtime.getRuntime().exec("setprop ro.config.hw_fast_dormancy 1");
-					Runtime.getRuntime().exec("setprop ro.config.hw_quickpoweron true");
-					Runtime.getRuntime().exec("setprop ro.kernel.android.checkjni 0");
-					Runtime.getRuntime().exec("setprop ro.kernel.checkjni 0");
-					Runtime.getRuntime().exec("setprop dalvik.vm.checkjni false");
-					Runtime.getRuntime().exec("setprop dalvik.vm.dexopt-data-only 1");
-					Runtime.getRuntime().exec("setprop dalvik.vm.heapstartsize 5m");
-					Runtime.getRuntime().exec("setprop dalvik.vm.heapgrowthlimit 48m");
-					Runtime.getRuntime().exec("setprop dalvik.vm.heapsize 64m");
-					Runtime.getRuntime().exec("setprop dalvik.vm.verify-bytecode false");
-					Runtime.getRuntime().exec("setprop dalvik.vm.execution-mode int:jit");
-					Runtime.getRuntime().exec("setprop dalvik.vm.lockprof.threshold 250");
-					Runtime.getRuntime().exec("setprop dalvik.vm.dexopt-flags m v,o y");
-					Runtime.getRuntime().exec("setprop dalvik.vm.stack-trace-file /data/anr/traces.txt");
-					Runtime.getRuntime().exec("setprop dalvik.vm.jmiopts forcecopy");
-					Runtime.getRuntime().exec("setprop persist.sys.use_dithering 1");
-					Runtime.getRuntime().exec("setprop persist.adb.notify 0");
-					Runtime.getRuntime().exec("setprop persist.android.strictmode 0");
-					Runtime.getRuntime().exec("setprop wifi.supplicant_scan_interval 180");
-					Runtime.getRuntime().exec("setprop debug.performance.tuning 1");
-				} catch (Exception e) {}
-				SketchwareUtil.showMessage(getApplicationContext(), "Restart your phone to apply changes.");
+				ob.setTarget(linear8);
+				ob.setPropertyName("alpha");
+				ob.setFloatValues((float)(1), (float)(0.5d));
+				ob.setDuration((int)(100));
+				ob.start();
+				ob.setTarget(linear8);
+				ob.setPropertyName("alpha");
+				ob.setFloatValues((float)(0.5d), (float)(1));
+				ob.setDuration((int)(100));
+				ob.start();
+				t = new TimerTask() {
+					@Override
+					public void run() {
+						runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								i.setClass(getApplicationContext(), ProcessingActivity.class);
+								startActivity(i);
+							}
+						});
+					}
+				};
+				_timer.schedule(t, (int)(388));
 			}
 		});
 	}
@@ -180,7 +155,7 @@ public class MainActivity extends Activity {
 		textview6.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/sf_regular.ttf"), 1);
 		textview7.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/sf_bold.ttf"), 1);
 		textview8.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/sf_regular.ttf"), 1);
-		textview9.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/sf_black.ttf"), 1);
+		textview9.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/light.ttf"), 1);
 		textview10.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/sf_black.ttf"), 1);
 		linear4.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)20, 0xFFF5F5F5));
 		linear5.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)20, 0xFFF5F5F5));
