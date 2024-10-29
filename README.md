@@ -6,4 +6,5 @@ Optimise your smartphone in a second with this utility. You need root permission
 ## Tested on
 - Xiaomi Redmi Note 12 (custom ROM)
 - Xiaomi Redmi Note 12 Pro+
-- OnePlus 8T
+- OnePlus 8T (stock ROM)
+- OnePlus 8T (custom ROM)
