@@ -1,6 +1,7 @@
 package com.superisuer.sao;
 
 import android.animation.*;
+import android.animation.ObjectAnimator;
 import android.app.*;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -22,8 +23,14 @@ import android.text.*;
 import android.text.style.*;
 import android.util.*;
 import android.view.*;
+import android.view.View;
 import android.view.View.*;
 import android.view.animation.*;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.webkit.*;
 import android.widget.*;
 import android.widget.LinearLayout;
@@ -42,11 +49,14 @@ public class ProcessingActivity extends Activity {
 	
 	private LinearLayout linear1;
 	private LinearLayout linear2;
+	private LinearLayout linear3;
 	private TextView textview1;
+	private TextView textview2;
 	
 	private AlertDialog.Builder d;
 	private TimerTask t;
 	private Intent i = new Intent();
+	private ObjectAnimator ob = new ObjectAnimator();
 	
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
@@ -59,13 +69,44 @@ public class ProcessingActivity extends Activity {
 	private void initialize(Bundle _savedInstanceState) {
 		linear1 = findViewById(R.id.linear1);
 		linear2 = findViewById(R.id.linear2);
+		linear3 = findViewById(R.id.linear3);
 		textview1 = findViewById(R.id.textview1);
+		textview2 = findViewById(R.id.textview2);
 		d = new AlertDialog.Builder(this);
+		
+		linear3.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				ob.setTarget(linear3);
+				ob.setPropertyName("alpha");
+				ob.setFloatValues((float)(1), (float)(0.5d));
+				ob.setDuration((int)(100));
+				ob.start();
+				ob.setTarget(linear3);
+				ob.setPropertyName("alpha");
+				ob.setFloatValues((float)(0.5d), (float)(1));
+				ob.setDuration((int)(100));
+				ob.start();
+				t = new TimerTask() {
+					@Override
+					public void run() {
+						runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								t.cancel();
+								finish();
+							}
+						});
+					}
+				};
+				_timer.schedule(t, (int)(300));
+			}
+		});
 	}
 	
 	private void initializeLogic() {
-		linear2.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)15, 0xFFEEEEEE));
-		textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/light.ttf"), 0);
+		linear2.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)20, 0xFFEEEEEE));
+		textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/sourcecodepro.ttf"), 0);
 		d.setMessage("OPTIONALLY. To continue, you need to download and install the Magisk module. If you do not have it downloaded, then click \"Download\".");
 		d.setPositiveButton("Download", new DialogInterface.OnClickListener() {
 			@Override
@@ -91,7 +132,7 @@ public class ProcessingActivity extends Activity {
 									runOnUiThread(new Runnable() {
 										@Override
 										public void run() {
-											textview1.setText(textview1.getText().toString().concat("\n! Make sure you have access to build.prop.\n> Communication has been accelerated.\n> Improved performance.\n"));
+											textview1.setText(textview1.getText().toString().concat("> Waiting for the system to respond.\n> Build.prop tweaks:\n> Communication has been accelerated.\n> Improved performance."));
 											try { 
 												Runtime.getRuntime().exec("su -c setprop ro.HOME_APP_ADJ 1");
 												Runtime.getRuntime().exec("su -c setprop ro.media.enc.jpeg.quality 100");
@@ -480,6 +521,8 @@ public class ProcessingActivity extends Activity {
 		});
 		d.setTitle("Until the start");
 		d.create().show();
+		linear3.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)20, 0xFFEEEEEE));
+		textview2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/light.ttf"), 0);
 	}
 	
 	

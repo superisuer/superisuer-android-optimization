@@ -155,7 +155,7 @@ public class MainActivity extends Activity {
 		textview6.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/sf_regular.ttf"), 1);
 		textview7.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/sf_bold.ttf"), 1);
 		textview8.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/sf_regular.ttf"), 1);
-		textview9.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/light.ttf"), 1);
+		textview9.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/light.ttf"), 0);
 		textview10.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/sf_black.ttf"), 1);
 		linear4.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)20, 0xFFF5F5F5));
 		linear5.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)20, 0xFFF5F5F5));
