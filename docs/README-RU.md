@@ -1,4 +1,5 @@
 # <p align="center">Superisuer Android Optimization</p>
+### <p align="center">[[English](https://github.com/superisuer/superisuer-android-optimization/blob/main/README.md)] [[Русский](https://github.com/superisuer/superisuer-android-optimization/blob/main/docs/README-RU.md)]</p>
 ## <p align="center"> от [superisuer](https://github.com/superisuer) и [saivan4ick](https://github.com/saivan4ick)</p>
 ## <p align="center">![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)</p>
 Повысьте производительность вашего Android-устройства всего за секунду с помощью этой утилиты, которая требует root-доступа для работы. Это совершенно бесплатное приложение разработано специально для пользователей Android и предлагает ряд оптимизаций. Оно включает в себя такие функции, как отключение отслеживания Google, отключение проверки ошибок и предоставление журналов в реальном времени, а также различные другие настройки для повышения эффективности системы.
