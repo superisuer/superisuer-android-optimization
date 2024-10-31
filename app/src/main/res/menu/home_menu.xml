@@ -1,0 +1,41 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="none">
+        <item
+            android:icon="@drawable/ic_settings"
+            android:id="@+id/nav_settings"
+            android:title="Settings"
+            app:contentDescription="Settings" />
+
+    </group>
+    
+    <group android:checkableBehavior="none">
+    
+        <item
+           android:icon="@drawable/ic_settings"
+           android:id="@+id/more_apps"
+           android:title="More Apps"/>
+           
+           
+       </group>     
+    
+    <group android:checkableBehavior="none"
+        android:id="@+id/others_menu_group"
+        android:title="Athers">
+        <item
+            android:icon="@drawable/ic_share"
+            android:id="@+id/nav_share"
+            android:title="Share"
+            app:contentDescription="share" />
+
+        <item
+            android:icon="@drawable/ic_book"
+            android:id="@+id/nav_licence"
+            android:title="Open source license"
+            app:contentDescription="OpenSourceLicence" />
+    </group>
+
+</menu>

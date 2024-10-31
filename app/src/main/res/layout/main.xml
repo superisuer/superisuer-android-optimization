@@ -10,7 +10,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="200dp"
 		android:padding="8dp"
-		android:background="#424242"
+		android:background="#212121"
 		android:gravity="center_horizontal|center_vertical"
 		android:orientation="vertical">
 		<TextView
@@ -44,7 +44,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:padding="8dp"
-		android:background="#FFFFFF"
+		android:background="#212121"
 		android:orientation="vertical">
 		<LinearLayout
 			android:id="@+id/linear3"
@@ -68,14 +68,14 @@
 					android:text="Performance"
 					android:textSize="18sp"
 					android:textStyle="bold"
-					android:textColor="#000000" />
+					android:textColor="?colorOnSurface" />
 				<TextView
 					android:id="@+id/textview5"
 					android:layout_width="150dp"
 					android:layout_height="wrap_content"
 					android:text="Optimizing raw Android into a best system. Disabling unnecessary things and restrictions."
 					android:textSize="12sp"
-					android:textColor="#000000" />
+					android:textColor="?colorOnSurface" />
 			</LinearLayout>
 			<LinearLayout
 				android:id="@+id/linear4"
@@ -93,14 +93,14 @@
 					android:text="Network"
 					android:textSize="18sp"
 					android:textStyle="bold"
-					android:textColor="#000000" />
+					android:textColor="?colorOnSurface" />
 				<TextView
 					android:id="@+id/textview6"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:text="Sets up communication better and disables restrictions. Perhaps your manufacturer has already done this for us."
 					android:textSize="12sp"
-					android:textColor="#000000" />
+					android:textColor="?colorOnSurface" />
 			</LinearLayout>
 		</LinearLayout>
 		<LinearLayout
@@ -124,14 +124,14 @@
 					android:text="Ultimate videos and photos tweaks"
 					android:textSize="18sp"
 					android:textStyle="bold"
-					android:textColor="#000000" />
+					android:textColor="?colorOnSurface" />
 				<TextView
 					android:id="@+id/textview8"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:text="Optimization of video streaming, video acceleration, highest quality video and photos."
 					android:textSize="12sp"
-					android:textColor="#000000" />
+					android:textColor="?colorOnSurface" />
 			</LinearLayout>
 		</LinearLayout>
 		<LinearLayout
@@ -150,7 +150,16 @@
 				android:text="Start"
 				android:textSize="18sp"
 				android:textStyle="bold"
-				android:textColor="#2196F3" />
+				android:textColor="?colorOnPrimary" />
 		</LinearLayout>
+		<TextView
+			android:id="@+id/textview11"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:padding="8dp"
+			android:text="old activity, wow"
+			android:textSize="12sp"
+			android:textStyle="bold|italic"
+			android:textColor="#FFFFFF" />
 	</LinearLayout>
 </LinearLayout>
